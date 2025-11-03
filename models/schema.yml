@@ -1,0 +1,19 @@
+models:
+  - name: dim_airplane
+    columns:
+      - name: airplane_bk
+        tests:
+          - unique
+          - not_null
+  - name: dim_city
+    columns:
+      - name: city_bk
+        tests:
+          - unique
+          - not_null
+  - name: dim_customer
+    columns:
+      - name: customer_bk
+        tests:
+          - unique
+          - not_null
