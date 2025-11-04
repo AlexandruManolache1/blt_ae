@@ -15,10 +15,11 @@ Data is structured in following layers / schemas
 Parts not finished :
 
 - int layer : trimming for all the STG models
-- tests in schema.yml ; every dimension need to have unique key constraint
+- tests in schema.yml ; every dimension need to have at least unique key constraint.
+- tests for fact tables ;  data integrity . ex: missing Customers groups for customers.  
 - ACL set up
-- visualization part   | ERD diagram using something like PowerBI where we can see how we can present this.  
-
+- visualization part  in Looker Studio | ERD diagram using something like PowerBI where we can see how we can present the model. 
+ 
 ---------
 
 Explanations about the data model.
@@ -30,3 +31,11 @@ Explanations about the data model.
 
 - fact_trips - here we can find information about trips: Origin & Destination City , Airplace that operated, Duration.
 - fact_order - here we store information about customers that made the order,price,seat and status.
+
+I analyzed the posibility of merging the two facts, but they have different business meaning => different grain. 
+In fact trip we have : 1 row per trip.
+In fact order we have : 1 row per order. 
+I would  assume in the same order we can have 1+ trips. 
+
+So i choose to have separate facts, and join on trip_Id. 
+
